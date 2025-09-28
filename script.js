@@ -33,25 +33,21 @@ atualizarContador();
 setInterval(atualizarContador, 1000);
 
 
-// --- CARROSSEL AUTOMÁTICO ---
+// --- CARROSSEL AUTOMÁTICO COM TRANSIÇÃO SUAVE ---
 const carousel = document.getElementById('carousel-slide');
-const slides = carousel.children;
+const slides = Array.from(carousel.children);
 let currentIndex = 0;
 
 function nextSlide() {
-    const slideWidth = slides[0].offsetWidth; // largura de cada imagem
     currentIndex++;
-    if (currentIndex >= slides.length) {
-        currentIndex = 0;
-    }
-    carousel.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    if (currentIndex >= slides.length) currentIndex = 0;
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
 // Troca de slide a cada 3 segundos
 setInterval(nextSlide, 3000);
 
-// Ajusta o carrossel quando a tela for redimensionada
+// Ajusta o carrossel se a tela for redimensionada
 window.addEventListener('resize', () => {
-    const slideWidth = slides[0].offsetWidth;
-    carousel.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 });
