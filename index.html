@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nosso Cantinho</title>
 
-    <!-- AJUSTE: configuração do Tailwind deve vir ANTES do import -->
+    <!-- Configuração Tailwind antes do import -->
     <script>
         tailwind.config = {
             theme: {
@@ -17,8 +17,6 @@
             }
         }
     </script>
-
-    <!-- Importando Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="style.css">
@@ -32,7 +30,8 @@
     <div class="absolute inset-0 bg-black bg-opacity-40"></div>
 
     <div class="relative z-10 text-white p-4">
-        <header class="py-8">
+        <!-- AJUSTE: centralizei o título -->
+        <header class="py-8 text-center">
             <h1 class="text-5xl md:text-6xl font-bold drop-shadow-lg">Nosso Cantinho 💖✨</h1>
         </header>
 
@@ -60,23 +59,24 @@
             </section>
 
             <!-- Contador -->
-            <section class="mt-12">
+            <section class="mt-12 text-center">
                 <h2 class="text-3xl font-light drop-shadow-lg">Juntos há:</h2>
-                <div id="contador" class="mt-4 flex justify-center gap-2 md:gap-8 bg-white/20 backdrop-blur-sm p-6 rounded-2xl max-w-lg mx-auto shadow-xl">
+                <!-- AJUSTE: mudei a cor do texto do contador para rosa escuro -->
+                <div id="contador" class="mt-4 flex justify-center gap-2 md:gap-8 bg-white/80 backdrop-blur-sm p-6 rounded-2xl max-w-lg mx-auto shadow-xl text-pink-700 font-bold">
                     <div class="text-center">
-                        <span id="dias" class="block text-4xl md:text-6xl font-bold">00</span>
+                        <span id="dias" class="block text-4xl md:text-6xl">00</span>
                         <span class="text-sm md:text-base">Dias</span>
                     </div>
                     <div class="text-center">
-                        <span id="horas" class="block text-4xl md:text-6xl font-bold">00</span>
+                        <span id="horas" class="block text-4xl md:text-6xl">00</span>
                         <span class="text-sm md:text-base">Horas</span>
                     </div>
                     <div class="text-center">
-                        <span id="minutos" class="block text-4xl md:text-6xl font-bold">00</span>
+                        <span id="minutos" class="block text-4xl md:text-6xl">00</span>
                         <span class="text-sm md:text-base">Minutos</span>
                     </div>
                     <div class="text-center">
-                        <span id="segundos" class="block text-4xl md:text-6xl font-bold">00</span>
+                        <span id="segundos" class="block text-4xl md:text-6xl">00</span>
                         <span class="text-sm md:text-base">Segundos</span>
                     </div>
                 </div>
@@ -93,7 +93,6 @@
         </main>
     </div>
 
-    <!-- AJUSTE: "defer" garante que o script rode após o DOM -->
     <script src="script.js" defer></script>
 </body>
 </html>
