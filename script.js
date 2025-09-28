@@ -32,7 +32,6 @@ function atualizarContador() {
 atualizarContador();
 setInterval(atualizarContador, 1000);
 
-
 // --- CARROSSEL AUTOMÁTICO COM TRANSIÇÃO SUAVE ---
 const carousel = document.getElementById('carousel-slide');
 const slides = Array.from(carousel.children);
@@ -51,3 +50,54 @@ setInterval(nextSlide, 3000);
 window.addEventListener('resize', () => {
     carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 });
+
+// --- CONTROLE DE MÚSICA ---
+const musica = document.getElementById('musica-fundo');
+const playPauseBtn = document.getElementById('play-pause-btn');
+const volumeSlider = document.getElementById('volume-slider');
+
+// Verifica se os elementos existem antes de adicionar event listeners
+if (musica && playPauseBtn && volumeSlider) {
+    // Botão Play/Pause
+    playPauseBtn.addEventListener('click', function() {
+        if (musica.paused) {
+            musica.play().then(() => {
+                playPauseBtn.innerHTML = '⏸️ Pause';
+                playPauseBtn.classList.remove('bg-pink-500');
+                playPauseBtn.classList.add('bg-green-500');
+            }).catch(error => {
+                console.log('Erro ao reproduzir:', error);
+            });
+        } else {
+            musica.pause();
+            playPauseBtn.innerHTML = '▶️ Play';
+            playPauseBtn.classList.remove('bg-green-500');
+            playPauseBtn.classList.add('bg-pink-500');
+        }
+    });
+
+    // Controle de volume
+    volumeSlider.addEventListener('input', function() {
+        musica.volume = volumeSlider.value;
+    });
+
+    // Atualizar o volume inicial
+    musica.volume = volumeSlider.value;
+
+    // Tentar reproduzir automaticamente após interação do usuário
+    document.addEventListener('click', function iniciarMusica() {
+        if (musica.paused) {
+            musica.play().then(() => {
+                playPauseBtn.innerHTML = '⏸️ Pause';
+                playPauseBtn.classList.remove('bg-pink-500');
+                playPauseBtn.classList.add('bg-green-500');
+            }).catch(error => {
+                console.log('Autoplay bloqueado:', error);
+            });
+        }
+        // Remove o listener após a primeira interação
+        document.removeEventListener('click', iniciarMusica);
+    }, { once: true });
+} else {
+    console.log('Elementos do player de música não encontrados');
+}
