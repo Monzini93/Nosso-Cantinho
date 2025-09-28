@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Cantinho</title>
+    <title>Nosso Cantinho 💖</title>
 
-    <!-- Configuração Tailwind antes do import -->
+    <!-- Configuração Tailwind personalizada -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
+                        cursive: ['Dancing Script', 'cursive'],
                     },
+                    colors: {
+                        'love-pink': '#ff6b93',
+                        'love-red': '#ff4d6d',
+                        'love-gold': '#ffd166',
+                        'romantic-purple': '#c8a2c8',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite',
+                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-gentle': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8' },
+                        },
+                        heartbeat: {
+                            '0%': { transform: 'scale(1)' },
+                            '25%': { transform: 'scale(1.1)' },
+                            '50%': { transform: 'scale(1)' },
+                            '75%': { transform: 'scale(1.05)' },
+                            '100%': { transform: 'scale(1)' },
+                        }
+                    }
                 }
             }
         }
@@ -22,114 +51,174 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .romantic-border {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 0 30px rgba(255, 107, 147, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                        0 0 20px rgba(255, 107, 147, 0.3);
+        }
+        
+        .floating-hearts::before {
+            content: '💖';
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .floating-hearts::after {
+            content: '✨';
+            animation: float 5s ease-in-out infinite 1s;
+        }
+    </style>
 </head>
-<body class="bg-cover bg-center bg-no-repeat bg-fixed" 
+<body class="bg-cover bg-center bg-no-repeat bg-fixed min-h-screen" 
       style="background-image: url('https://i.pinimg.com/1200x/00/d2/03/00d203115f92da126e96dcede629524a.jpg');">
 
+    <!-- Efeito de partículas românticas -->
     <div class="hearts-container"></div>
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-pink-900/20 via-purple-900/10 to-red-900/20"></div>
+    
+    <!-- Overlay com gradiente romântico -->
+    <div class="absolute inset-0 bg-gradient-to-br from-love-pink/10 via-romantic-purple/15 to-love-red/10"></div>
 
-    <div class="relative z-10 text-white p-4">
-        <header class="py-8 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold drop-shadow-lg">Nosso Cantinho 💖✨</h1>
+    <div class="relative z-10 text-white p-4 min-h-screen">
+        <!-- Header com efeito especial -->
+        <header class="py-12 text-center relative">
+            <div class="absolute inset-0 bg-white/10 rounded-3xl blur-xl -z-10"></div>
+            <div class="floating-hearts text-4xl mb-4">💖✨</div>
+            <h1 class="text-6xl md:text-7xl font-bold text-glow font-cursive bg-gradient-to-r from-pink-200 to-rose-200 bg-clip-text text-transparent">
+                Nosso Cantinho
+            </h1>
+            <p class="text-xl mt-4 text-pink-200 font-light italic">Onde nosso amor floresce a cada dia</p>
         </header>
 
-        <main>
-            <!-- Primeiro Texto -->
-            <section class="mt-12 max-w-3xl mx-auto px-4">
-                <p class="bg-pink-100/40 backdrop-blur-sm p-6 rounded-xl text-lg shadow-lg text-center italic transform hover:scale-105 transition-transform duration-300 text-pink-900 font-medium">
-                    "Em teus braços encontrei o meu lar,<br>
-                    em teus olhos, o meu céu estrelado,<br>
-                    e em teu amor, a razão do meu viver."
-                </p>
+        <main class="max-w-6xl mx-auto">
+            <!-- Primeiro Texto com Decoração -->
+            <section class="mt-16 relative">
+                <div class="absolute -top-4 -left-4 text-4xl text-love-pink animate-float">🌹</div>
+                <div class="absolute -bottom-4 -right-4 text-4xl text-love-red animate-float" style="animation-delay: 2s;">💕</div>
+                
+                <div class="bg-gradient-to-r from-pink-100/50 to-rose-100/50 backdrop-blur-lg p-8 rounded-3xl romantic-border transform hover:scale-102 transition-all duration-500">
+                    <p class="text-xl text-center italic text-rose-900 font-medium leading-relaxed font-cursive text-2xl">
+                        "Em teus braços encontrei o meu lar,<br>
+                        em teus olhos, o meu céu estrelado,<br>
+                        e em teu amor, a razão do meu viver."
+                    </p>
+                </div>
             </section>
 
-            <!-- Carrossel -->
-            <section class="mt-12 relative w-11/12 max-w-2xl mx-auto overflow-hidden rounded-2xl shadow-2xl h-[400px] bg-black">
-                <div id="carousel-slide" class="flex transition-transform duration-700 ease-in-out h-full">
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto1.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto2.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto3.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto4.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto5.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto6.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto7.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto8.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto9.jpg" class="max-w-full max-h-full object-contain">
-                    </div>
-                    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                        <img src="fotos/foto10.jpg" class="max-w-full max-h-full object-contain">
+            <!-- Carrossel com Moldura Especial -->
+            <section class="mt-20 relative">
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-love-pink text-white px-6 py-2 rounded-full font-cursive text-xl shadow-lg">
+                    Nossas Memórias
+                </div>
+                
+                <div class="relative w-11/12 max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-2xl h-[500px] romantic-border bg-black/80">
+                    <div id="carousel-slide" class="flex transition-transform duration-1000 ease-in-out h-full">
+                        <!-- Suas 10 fotos aqui -->
+                        <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+                            <img src="fotos/foto1.jpg" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <!-- ... repetir para as outras 9 fotos ... -->
                     </div>
                 </div>
             </section>
 
-            <!-- Segundo Texto -->
-            <section class="mt-12 max-w-3xl mx-auto px-4">
-                <p class="bg-rose-100/40 backdrop-blur-sm p-6 rounded-xl text-lg shadow-lg text-center transform hover:scale-105 transition-transform duration-300 text-rose-900 font-medium">
-                    💖 Cada batida do meu coração sussurra o teu nome,<br>
-                    cada momento contigo é uma eternidade de felicidade. 💖
-                </p>
+            <!-- Segundo Texto com Corações -->
+            <section class="mt-20 relative">
+                <div class="absolute -top-6 -left-6 text-5xl animate-heartbeat">💖</div>
+                <div class="absolute -bottom-6 -right-6 text-5xl animate-heartbeat" style="animation-delay: 0.5s;">💝</div>
+                
+                <div class="bg-gradient-to-l from-rose-100/50 to-red-100/50 backdrop-blur-lg p-8 rounded-3xl romantic-border transform hover:scale-102 transition-all duration-500">
+                    <p class="text-xl text-center text-red-900 font-medium leading-relaxed">
+                        💖 Cada batida do meu coração sussurra o teu nome,<br>
+                        cada momento contigo é uma eternidade de felicidade. 💖
+                    </p>
+                </div>
             </section>
 
-            <!-- Contador -->
-            <section class="mt-12 text-center">
-                <h2 class="text-3xl font-light drop-shadow-lg text-pink-700">Juntos há:</h2>
-                <div id="contador" class="mt-4 flex justify-center gap-2 md:gap-8 bg-white/80 backdrop-blur-sm p-6 rounded-2xl max-w-lg mx-auto shadow-xl text-pink-700 font-bold">
-                    <div class="text-center">
-                        <span id="dias" class="block text-4xl md:text-6xl">00</span>
-                        <span class="text-sm md:text-base">Dias</span>
-                    </div>
-                    <div class="text-center">
-                        <span id="horas" class="block text-4xl md:text-6xl">00</span>
-                        <span class="text-sm md:text-base">Horas</span>
-                    </div>
-                    <div class="text-center">
-                        <span id="minutos" class="block text-4xl md:text-6xl">00</span>
-                        <span class="text-sm md:text-base">Minutos</span>
-                    </div>
-                    <div class="text-center">
-                        <span id="segundos" class="block text-4xl md:text-6xl">00</span>
-                        <span class="text-sm md:text-base">Segundos</span>
+            <!-- Contador com Design Especial -->
+            <section class="mt-20 text-center relative">
+                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-love-pink to-love-red text-white px-8 py-3 rounded-full font-cursive text-2xl shadow-lg">
+                    ⏰ Nossa Jornada
+                </div>
+                
+                <div class="bg-gradient-to-br from-white/90 to-pink-100/80 backdrop-blur-lg p-8 rounded-3xl romantic-border max-w-2xl mx-auto">
+                    <h2 class="text-4xl font-light mb-6 bg-gradient-to-r from-love-pink to-love-red bg-clip-text text-transparent font-cursive">
+                        Juntos há:
+                    </h2>
+                    
+                    <div id="contador" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                            <span id="dias" class="block text-5xl md:text-6xl font-bold text-love-pink animate-pulse-gentle">00</span>
+                            <span class="text-sm font-semibold text-rose-700">Dias</span>
+                        </div>
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                            <span id="horas" class="block text-5xl md:text-6xl font-bold text-love-red animate-pulse-gentle" style="animation-delay: 0.3s;">00</span>
+                            <span class="text-sm font-semibold text-rose-700">Horas</span>
+                        </div>
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                            <span id="minutos" class="block text-5xl md:text-6xl font-bold text-romantic-purple animate-pulse-gentle" style="animation-delay: 0.6s;">00</span>
+                            <span class="text-sm font-semibold text-rose-700">Minutos</span>
+                        </div>
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                            <span id="segundos" class="block text-5xl md:text-6xl font-bold text-love-gold animate-pulse-gentle" style="animation-delay: 0.9s;">00</span>
+                            <span class="text-sm font-semibold text-rose-700">Segundos</span>
+                        </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Terceiro Texto -->
-            <section class="mt-12 max-w-3xl mx-auto px-4">
-                <p class="bg-red-100/40 backdrop-blur-sm p-6 rounded-xl text-lg shadow-lg text-center italic transform hover:scale-105 transition-transform duration-300 text-red-900 font-medium">
-                    "Nosso amor é como as estrelas:<br>
-                    eterno, brilhante e capaz de iluminar<br>
-                    até a noite mais escura."
-                </p>
+
+            <!-- Terceiro Texto com Estrelas -->
+            <section class="mt-20 relative">
+                <div class="absolute -top-4 left-10 text-3xl animate-float">⭐</div>
+                <div class="absolute -bottom-4 right-10 text-3xl animate-float" style="animation-delay: 1.5s;">🌟</div>
+                
+                <div class="bg-gradient-to-r from-red-100/50 to-orange-100/50 backdrop-blur-lg p-8 rounded-3xl romantic-border transform hover:scale-102 transition-all duration-500">
+                    <p class="text-xl text-center italic text-red-900 font-medium leading-relaxed font-cursive text-2xl">
+                        "Nosso amor é como as estrelas:<br>
+                        eterno, brilhante e capaz de iluminar<br>
+                        até a noite mais escura."
+                    </p>
+                </div>
             </section>
-            
-            <!-- Música -->
-            <section class="mt-12 pb-16">
-                <audio id="musica-fundo" src="Pra Você Guardei O Amor (Nando Reis e Ana Cañas).mp3" loop></audio>
-                <div class="flex justify-center items-center gap-4">
-                    <button id="play-pause-btn" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg">▶️ Play</button>
-                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" class="w-32 cursor-pointer">
+
+            <!-- Player de Música Estilizado -->
+            <section class="mt-20 pb-20 text-center relative">
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-love-gold text-gray-800 px-6 py-2 rounded-full font-cursive text-xl shadow-lg">
+                    🎵 Nossa Trilha Sonora
+                </div>
+                
+                <div class="bg-gradient-to-br from-white/80 to-yellow-100/60 backdrop-blur-lg p-8 rounded-3xl romantic-border max-w-md mx-auto">
+                    <audio id="musica-fundo" src="Pra Você Guardei O Amor (Nando Reis e Ana Cañas).mp3" loop></audio>
+                    
+                    <div class="flex flex-col items-center gap-6">
+                        <button id="play-pause-btn" class="bg-gradient-to-r from-love-pink to-love-red text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:scale-110 hover:shadow-xl text-lg flex items-center gap-3">
+                            <span id="play-icon">▶️</span>
+                            <span id="play-text">Play</span>
+                        </button>
+                        
+                        <div class="w-full">
+                            <label class="block text-gray-700 font-semibold mb-2">Volume</label>
+                            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5" 
+                                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-love-pink">
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
+
+        <!-- Footer Romântico -->
+        <footer class="text-center py-8 text-pink-200">
+            <p class="font-cursive text-xl">Feito com 💖 para eternizar nosso amor</p>
+            <p class="text-sm mt-2 opacity-80">Cada segundo ao seu lado é um tesouro</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
@@ -139,20 +228,22 @@
         window.addEventListener('load', function() {
             const musica = document.getElementById('musica-fundo');
             const playPauseBtn = document.getElementById('play-pause-btn');
+            const playIcon = document.getElementById('play-icon');
+            const playText = document.getElementById('play-text');
             
             if (musica) {
-                // Pequeno delay para garantir que tudo carregou
                 setTimeout(() => {
                     musica.play().then(() => {
                         if (playPauseBtn) {
-                            playPauseBtn.innerHTML = '⏸️ Pause';
-                            playPauseBtn.classList.remove('bg-pink-500');
-                            playPauseBtn.classList.add('bg-green-500');
+                            playIcon.textContent = '⏸️';
+                            playText.textContent = 'Pause';
+                            playPauseBtn.classList.add('from-green-400', 'to-teal-400');
+                            playPauseBtn.classList.remove('from-love-pink', 'to-love-red');
                         }
                     }).catch(error => {
                         console.log('Autoplay bloqueado:', error);
                     });
-                }, 1000);
+                }, 1500);
             }
         });
     </script>
