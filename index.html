@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carregando Nosso Amor</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+            animation: float 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg) scale(1); 
+                opacity: 0; 
+            }
+        }
+        
+        .progress-bar {
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse-heart {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <!-- Corações flutuantes -->
+    <div id="hearts-container"></div>
+    
+    <!-- Conteúdo principal -->
+    <div class="text-center text-white z-10 px-4 max-w-md">
+        <!-- Coração pulsante -->
+        <div class="pulse-heart text-6xl mb-6">💖</div>
+        
+        <!-- Título -->
+        <h1 class="text-3xl font-bold mb-4 fade-in">Carregando as informações do seu amor!</h1>
+        
+        <!-- Mensagem fofa -->
+        <p class="text-lg mb-6 opacity-90 fade-in" style="animation-delay: 0.3s;">
+            Preparando cada detalhe com muito carinho...
+        </p>
+        
+        <!-- Barra de progresso -->
+        <div class="bg-white/30 rounded-full h-4 mb-6 overflow-hidden">
+            <div id="progress-bar" class="progress-bar h-full bg-pink-500 rounded-full"></div>
+        </div>
+        
+        <!-- Porcentagem -->
+        <div class="text-2xl font-bold mb-2">
+            <span id="percentage">0%</span>
+        </div>
+        
+        <!-- Mensagens aleatórias -->
+        <div id="loading-messages" class="text-sm opacity-80 h-8 fade-in" style="animation-delay: 0.6s;">
+            Inicializando o sistema de amor...
+        </div>
+        
+        <!-- Botão (inicialmente escondido) -->
+        <div id="continue-section" class="hidden fade-in mt-8">
+            <p class="text-lg mb-4">Seu amor está pronto! 💕</p>
+            <button id="continue-btn" 
+                    class="bg-white text-pink-600 font-bold py-3 px-8 rounded-full 
+                           hover:bg-pink-100 transform hover:scale-105 transition-all 
+                           shadow-lg pulse-heart">
+                🌸 Ver Nosso Cantinho 🌸
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Gerar corações flutuantes
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Mensagens de carregamento aleatórias
+        const messages = [
+            "Organizando nossas memórias...",
+            "Carregando os momentos especiais...",
+            "Preparando as surpresas...",
+            "Conectando nossos corações...",
+            "Carregando a trilha sonora do nosso amor...",
+            "Reunindo todas as fotos...",
+            "Preparando o contador de tempo juntos...",
+            "Carregando a magia do nosso romance...",
+            "Finalizando os últimos detalhes...",
+            "Quase pronto, amor!"
+        ];
+        
+        // Tempo de carregamento aleatório entre 10 e 15 segundos
+        const loadingTime = Math.floor(Math.random() * 5000) + 10000; // 10-15 segundos
+        let progress = 0;
+        let currentMessageIndex = 0;
+        
+        function startLoading() {
+            const progressBar = document.getElementById('progress-bar');
+            const percentage = document.getElementById('percentage');
+            const messagesEl = document.getElementById('loading-messages');
+            const continueSection = document.getElementById('continue-section');
+            
+            // Atualizar mensagens a cada 2 segundos
+            const messageInterval = setInterval(() => {
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                messagesEl.textContent = messages[currentMessageIndex];
+            }, 2000);
+            
+            // Simular progresso
+            const interval = setInterval(() => {
+                progress += (100 / (loadingTime / 100));
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    clearInterval(messageInterval);
+                    
+                    // Mostrar botão de continuar
+                    setTimeout(() => {
+                        continueSection.classList.remove('hidden');
+                        messagesEl.textContent = "Tudo pronto! Clique no botão abaixo 💖";
+                    }, 500);
+                }
+                
+                progressBar.style.width = progress + '%';
+                percentage.textContent = Math.min(Math.round(progress), 100) + '%';
+            }, 100);
+        }
+        
+        // Botão continuar
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            // Adicionar efeito de transição
+            document.body.style.animation = 'fadeOut 1s ease-in-out';
+            
+            setTimeout(() => {
+                window.location.href = 'main.html';
+            }, 1000);
+        });
+        
+        // Iniciar quando a página carregar
+        window.addEventListener('load', function() {
+            createHearts();
+            setTimeout(startLoading, 1000); // Pequeno delay para mostrar a animação inicial
+        });
+        
+        // Adicionar estilo de fade out
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
