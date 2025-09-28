@@ -54,10 +54,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        body {
+            background: 
+                /* Gradiente romântico principal */
+                linear-gradient(135deg, #ffafbd 0%, #ffc3a0 50%, #ffdde1 100%),
+                /* Corações sutis no fundo */
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,30 C60,20 75,25 75,35 C75,45 60,55 50,65 C40,55 25,45 25,35 C25,25 40,20 50,30 Z' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E");
+            background-size: cover, 150px 150px;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
         .romantic-border {
             border: 2px solid rgba(255, 255, 255, 0.3);
             box-shadow: 
-                0 0 30px rgba(255, 107, 147, 0.3),
+                0 0 30px rgba(255, 107, 147, 0.2),
                 inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
         
@@ -66,36 +77,30 @@
                         0 0 20px rgba(255, 107, 147, 0.3);
         }
         
-        .floating-hearts::before {
-            content: '💖';
-            animation: float 4s ease-in-out infinite;
+        .hover-scale {
+            transition: transform 0.3s ease;
         }
         
-        .floating-hearts::after {
-            content: '✨';
-            animation: float 5s ease-in-out infinite 1s;
+        .hover-scale:hover {
+            transform: scale(1.02);
         }
     </style>
 </head>
-<body class="bg-cover bg-center bg-no-repeat bg-fixed min-h-screen"  
-      style="background-image: url('fundo.jpg');">
+<body class="min-h-screen">
 
     <!-- Efeito de partículas românticas -->
     <div class="hearts-container"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-pink-900/20 via-purple-900/10 to-red-900/20"></div>
-    
-    <!-- Overlay com gradiente romântico -->
-    <div class="absolute inset-0 bg-gradient-to-br from-love-pink/10 via-romantic-purple/15 to-love-red/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-pink-900/10 via-purple-900/5 to-red-900/10"></div>
 
     <div class="relative z-10 text-white p-4 min-h-screen">
         <!-- Header com efeito especial -->
         <header class="py-12 text-center relative">
             <div class="absolute inset-0 bg-white/10 rounded-3xl blur-xl -z-10"></div>
-            <div class="floating-hearts text-4xl mb-4">💖✨</div>
+            <div class="text-4xl mb-4 animate-float">💖✨</div>
             <h1 class="text-6xl md:text-7xl font-bold text-glow font-cursive bg-gradient-to-r from-pink-200 to-rose-200 bg-clip-text text-transparent">
                 Nosso Cantinho
             </h1>
-            <p class="text-xl mt-4 text-pink-200 font-light italic">Onde nosso amor floresce a cada dia</p>
+            <p class="text-xl mt-4 text-pink-800 font-light italic">Onde nosso amor floresce a cada dia</p>
         </header>
 
         <main class="max-w-6xl mx-auto">
@@ -104,7 +109,7 @@
                 <div class="absolute -top-4 -left-4 text-4xl text-love-pink animate-float">🌹</div>
                 <div class="absolute -bottom-4 -right-4 text-4xl text-love-red animate-float" style="animation-delay: 2s;">💕</div>
                 
-                <div class="bg-gradient-to-r from-pink-100/50 to-rose-100/50 backdrop-blur-lg p-8 rounded-3xl romantic-border transform hover:scale-102 transition-all duration-500">
+                <div class="bg-white/70 backdrop-blur-lg p-8 rounded-3xl romantic-border hover-scale">
                     <p class="text-xl text-center italic text-rose-900 font-medium leading-relaxed font-cursive text-2xl">
                         "Em teus braços encontrei o meu lar,<br>
                         em teus olhos, o meu céu estrelado,<br>
@@ -119,11 +124,11 @@
                     Nossas Memórias
                 </div>
                 
-                <div class="relative w-11/12 max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-2xl h-[500px] romantic-border bg-black/80">
+                <div class="relative w-11/12 max-w-4xl mx-auto overflow-hidden rounded-3xl shadow-2xl h-[500px] romantic-border bg-black/20">
                     <div id="carousel-slide" class="flex transition-transform duration-1000 ease-in-out h-full">
                         <!-- Suas 10 fotos aqui -->
                         <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
-                            <img src="fotos/foto1.jpg" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-700">
+                            <img src="fotos/foto1.jpg" class="max-w-full max-h-full object-contain hover-scale transition-transform duration-700">
                         </div>
                         <!-- ... repetir para as outras 9 fotos ... -->
                     </div>
@@ -135,8 +140,8 @@
                 <div class="absolute -top-6 -left-6 text-5xl animate-heartbeat">💖</div>
                 <div class="absolute -bottom-6 -right-6 text-5xl animate-heartbeat" style="animation-delay: 0.5s;">💝</div>
                 
-                <div class="bg-gradient-to-l from-rose-100/50 to-red-100/50 backdrop-blur-lg p-8 rounded-3xl romantic-border transform hover:scale-102 transition-all duration-500">
-                    <p class="text-xl text-center text-red-900 font-medium leading-relaxed">
+                <div class="bg-white/70 backdrop-blur-lg p-8 rounded-3xl romantic-border hover-scale">
+                    <p class="text-xl text-center text-rose-900 font-medium leading-relaxed">
                         💖 Cada batida do meu coração sussurra o teu nome,<br>
                         cada momento contigo é uma eternidade de felicidade. 💖
                     </p>
@@ -149,25 +154,25 @@
                     ⏰ Nossa Jornada
                 </div>
                 
-                <div class="bg-gradient-to-br from-white/90 to-pink-100/80 backdrop-blur-lg p-8 rounded-3xl romantic-border max-w-2xl mx-auto">
+                <div class="bg-white/80 backdrop-blur-lg p-8 rounded-3xl romantic-border max-w-2xl mx-auto">
                     <h2 class="text-4xl font-light mb-6 bg-gradient-to-r from-love-pink to-love-red bg-clip-text text-transparent font-cursive">
                         Juntos há:
                     </h2>
                     
                     <div id="contador" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg hover-scale">
                             <span id="dias" class="block text-5xl md:text-6xl font-bold text-love-pink animate-pulse-gentle">00</span>
                             <span class="text-sm font-semibold text-rose-700">Dias</span>
                         </div>
-                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg hover-scale">
                             <span id="horas" class="block text-5xl md:text-6xl font-bold text-love-red animate-pulse-gentle" style="animation-delay: 0.3s;">00</span>
                             <span class="text-sm font-semibold text-rose-700">Horas</span>
                         </div>
-                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg hover-scale">
                             <span id="minutos" class="block text-5xl md:text-6xl font-bold text-romantic-purple animate-pulse-gentle" style="animation-delay: 0.6s;">00</span>
                             <span class="text-sm font-semibold text-rose-700">Minutos</span>
                         </div>
-                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg">
+                        <div class="text-center p-4 bg-white/60 rounded-2xl shadow-lg hover-scale">
                             <span id="segundos" class="block text-5xl md:text-6xl font-bold text-love-gold animate-pulse-gentle" style="animation-delay: 0.9s;">00</span>
                             <span class="text-sm font-semibold text-rose-700">Segundos</span>
                         </div>
@@ -180,8 +185,8 @@
                 <div class="absolute -top-4 left-10 text-3xl animate-float">⭐</div>
                 <div class="absolute -bottom-4 right-10 text-3xl animate-float" style="animation-delay: 1.5s;">🌟</div>
                 
-                <div class="bg-gradient-to-r from-red-100/50 to-orange-100/50 backdrop-blur-lg p-8 rounded-3xl romantic-border transform hover:scale-102 transition-all duration-500">
-                    <p class="text-xl text-center italic text-red-900 font-medium leading-relaxed font-cursive text-2xl">
+                <div class="bg-white/70 backdrop-blur-lg p-8 rounded-3xl romantic-border hover-scale">
+                    <p class="text-xl text-center italic text-rose-900 font-medium leading-relaxed font-cursive text-2xl">
                         "Nosso amor é como as estrelas:<br>
                         eterno, brilhante e capaz de iluminar<br>
                         até a noite mais escura."
@@ -195,7 +200,7 @@
                     🎵 Nossa Trilha Sonora
                 </div>
                 
-                <div class="bg-gradient-to-br from-white/80 to-yellow-100/60 backdrop-blur-lg p-8 rounded-3xl romantic-border max-w-md mx-auto">
+                <div class="bg-white/80 backdrop-blur-lg p-8 rounded-3xl romantic-border max-w-md mx-auto">
                     <audio id="musica-fundo" src="Pra Você Guardei O Amor (Nando Reis e Ana Cañas).mp3" loop></audio>
                     
                     <div class="flex flex-col items-center gap-6">
@@ -215,7 +220,7 @@
         </main>
 
         <!-- Footer Romântico -->
-        <footer class="text-center py-8 text-pink-200">
+        <footer class="text-center py-8 text-pink-800">
             <p class="font-cursive text-xl">Feito com 💖 para eternizar nosso amor</p>
             <p class="text-sm mt-2 opacity-80">Cada segundo ao seu lado é um tesouro</p>
         </footer>
@@ -249,4 +254,3 @@
     </script>
 </body>
 </html>
-
