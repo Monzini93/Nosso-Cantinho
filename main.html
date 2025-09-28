@@ -116,8 +116,31 @@
     </div>
 
     <script src="script.js" defer></script>
+    <script>
+// Tocar música automaticamente quando a página carregar
+window.addEventListener('load', function() {
+    const musica = document.getElementById('musica-fundo');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    
+    if (musica) {
+        // Pequeno delay para garantir que tudo carregou
+        setTimeout(() => {
+            musica.play().then(() => {
+                if (playPauseBtn) {
+                    playPauseBtn.innerHTML = '⏸️ Pause';
+                    playPauseBtn.classList.remove('bg-pink-500');
+                    playPauseBtn.classList.add('bg-green-500');
+                }
+            }).catch(error => {
+                console.log('Autoplay bloqueado:', error);
+            });
+        }, 1000);
+    }
+});
+</script>
 </body>
 </html>
+
 
 
 
