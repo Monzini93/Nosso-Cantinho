@@ -29,8 +29,29 @@ function atualizarContador() {
     segundosEl.textContent = segundos.toString().padStart(2, '0');
 }
 
-// AJUSTE: chamando logo de cara para exibir na primeira renderização
 atualizarContador();
-
-// Mantém o contador atualizando a cada segundo
 setInterval(atualizarContador, 1000);
+
+
+// --- CARROSSEL AUTOMÁTICO ---
+const carousel = document.getElementById('carousel-slide');
+const slides = carousel.children;
+let currentIndex = 0;
+
+function nextSlide() {
+    const slideWidth = slides[0].offsetWidth; // largura de cada imagem
+    currentIndex++;
+    if (currentIndex >= slides.length) {
+        currentIndex = 0;
+    }
+    carousel.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+}
+
+// Troca de slide a cada 3 segundos
+setInterval(nextSlide, 3000);
+
+// Ajusta o carrossel quando a tela for redimensionada
+window.addEventListener('resize', () => {
+    const slideWidth = slides[0].offsetWidth;
+    carousel.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+});
